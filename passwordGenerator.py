@@ -42,8 +42,9 @@ while T:
 
         letters = int(input("How many letters do you want? \n>.. "))
 
-        if letters > u_sub:
-            print("An error has occurred, Please start over again")
+        if letters > u_sub or letters > len(upper_lower_case):
+            print("\n* An error has occurred, Please start over again")
+            print("* The number of letters can't be bigger than {} \n".format(len(upper_lower_case)))
             continue
 
         print("")
@@ -55,8 +56,9 @@ while T:
             break
         numbers = int(input("How many numbers do you want? ***you have {} characters left.*** \n>.. ".format(u_sub)))
 
-        if numbers > u_sub:
-            print("An error has occurred, Please start over again")
+        if numbers > u_sub or numbers > len(digits):
+            print("\n* An error has occurred, Please start over again")
+            print("* The number of digits can't be bigger than {} \n".format(len(digits)))
             continue
 
         u_sub -= numbers
@@ -68,8 +70,9 @@ while T:
         symbols = int(input("How many symbols do you want? ie: '%$#@!*' ***you have {} characters left.*** \n>.. ".
                             format(u_sub)))
 
-        if symbols > u_sub:
-            print("An error has occurred, Please start over again")
+        if symbols > u_sub or symbols > len(punctuation):
+            print("\n* An error has occurred, Please start over again")
+            print("* The number of punctuations can't be bigger than {} \n".format(len(punctuation)))
             continue
 
     except ValueError as Error:
@@ -77,6 +80,7 @@ while T:
 
     else:
         T = False
+
 letters_random = random.sample(upper_lower_case, k=letters)
 digits_random = random.sample(digits, k=numbers)
 punctuation_random = random.sample(punctuation, k=symbols)
